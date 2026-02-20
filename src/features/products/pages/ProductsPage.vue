@@ -87,6 +87,10 @@ const onNextPage = async (): Promise<void> => {
       <p class="text-sm text-slate-600">
         Busca, filtra y navega productos con estado sincronizado en la URL.
       </p>
+      <p class="text-sm text-slate-600">
+        Desde el detalle de cada producto puedes generar un análisis con IA para evaluar riesgo y
+        recomendaciones accionables.
+      </p>
     </header>
 
     <Card class="space-y-4">

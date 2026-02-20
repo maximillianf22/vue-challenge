@@ -101,6 +101,15 @@ const generateInsight = async (): Promise<void> => {
 
       <section class="space-y-3 rounded-md border border-slate-200 bg-slate-50 p-4">
         <h2 class="text-lg font-medium">Análisis de IA</h2>
+        <p class="text-sm text-slate-600">
+          Esta sección genera una lectura rápida del producto con un resumen, nivel de riesgo y
+          acciones recomendadas.
+        </p>
+        <p class="text-sm text-slate-600">
+          Selecciona el proveedor y pulsa
+          <strong>Generar análisis</strong> para obtener apoyo en decisiones de catálogo,
+          priorización comercial y revisión de calidad de información.
+        </p>
         <div class="flex flex-col gap-3 md:flex-row">
           <Select
             :model-value="aiProvider"
