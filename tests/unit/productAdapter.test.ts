@@ -1,20 +1,21 @@
 import { describe, expect, it } from 'vitest'
-import { adaptDummyProducts, adaptFakeStoreProduct } from '@/features/products/adapters/productAdapter'
+import {
+  adaptFakeStoreProduct,
+  adaptFakeStoreProducts,
+} from '@/features/products/adapters/productAdapter'
 
 describe('productAdapter', () => {
-  it('maps dummyjson payload to domain shape', () => {
-    const result = adaptDummyProducts({
-      products: [
-        {
-          id: 1,
-          title: 'Test',
-          price: 10,
-          category: 'electronics',
-          description: 'Desc',
-          thumbnail: 'img.png',
-        },
-      ],
-    })
+  it('maps fake store payload to domain shape', () => {
+    const result = adaptFakeStoreProducts([
+      {
+        id: 1,
+        title: 'Test',
+        price: 10,
+        category: 'electronics',
+        description: 'Desc',
+        image: 'img.png',
+      },
+    ])
 
     expect(result[0]).toEqual({
       id: 1,

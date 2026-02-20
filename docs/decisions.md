@@ -1,25 +1,40 @@
-# Technical Decisions
+# Decisiones Técnicas
 
-## Why repository + adapter
+## Por qué repositorio + adaptador
 
-- Keeps domain independent from external API contracts.
-- Enables API fallback and deterministic mocks without changing UI.
+- Mantiene el dominio desacoplado de contratos externos.
+- Permite cambiar proveedor/fuente de datos sin modificar la UI.
+- Facilita fallback de API y mocks de forma controlada.
 
-## Why Vue Query
+## Por qué Vue Query
 
-- Server state caching, retries and loading/error states are standardized.
+- Estandariza estados de carga, error y reintento.
+- Simplifica cache de estado de servidor.
+- Reduce lógica duplicada en componentes.
 
-## Why Tailwind + shared UI components
+## Por qué Tailwind + UI compartida
 
-- Fast implementation with consistency.
-- Reusable primitives (`Button`, `Input`, `Select`, `Table`, etc.).
+- Acelera implementación manteniendo consistencia visual.
+- Promueve reutilización de primitivas (`Button`, `Input`, `Select`, `Table`, etc.).
+- Facilita ajustes globales de estilos.
 
-## Why BFF for IA
+## Por qué BFF/Function para IA
 
-- Protects provider keys.
-- Centralizes fallback logic and output validation.
+- Protege credenciales de proveedores.
+- Centraliza estrategia de fallback.
+- Permite validar y normalizar respuestas antes de llegar al frontend.
+
+## Buenas prácticas adoptadas
+
+- Tipado estricto con TypeScript.
+- Validación de datos con `zod` en fronteras del sistema.
+- Calidad continua con ESLint y Prettier.
+- Automatización de checks con Husky + lint-staged.
+- Cobertura base con pruebas unitarias y e2e.
+- Variables sensibles fuera de git (`.env`).
 
 ## Trade-offs
 
-- More files and structure than a basic challenge.
-- Higher setup cost, but easier maintenance and extension.
+- Mayor cantidad de archivos y configuración que un challenge básico.
+- Curva inicial más alta para nuevos contribuidores.
+- Mejor mantenibilidad y escalabilidad a mediano plazo.

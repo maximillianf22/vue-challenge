@@ -1,29 +1,53 @@
-# AI Architecture
+# Arquitectura de IA
 
-## Flow
+## Flujo general
 
-1. Product detail page requests insight.
-2. `HttpAIService` sends request to `/api/ai/generate`.
-3. BFF wrapper `completeWithAi` chooses provider strategy.
-4. Response is validated with `zod`.
-5. If all providers fail, deterministic fallback is returned.
+1. La vista de detalle de producto solicita el análisis.
+2. `HttpAIService` envía la solicitud a `/api/ai/generate`.
+3. El backend/function ejecuta la estrategia de proveedor.
+4. La respuesta se normaliza y valida con `zod`.
+5. Si todos los proveedores fallan, se retorna fallback determinístico.
 
-## Provider strategy
+## Estrategia de proveedores
 
-- `deepseek`: only DeepSeek.
-- `openai`: only OpenAI.
-- `auto`: DeepSeek first, OpenAI fallback.
+- `deepseek`: usa solo DeepSeek.
+- `openai`: usa solo OpenAI.
+- `auto`: intenta DeepSeek primero y OpenAI como fallback.
 
-## Contracts
+## Contrato de entrada/salida
 
-- Input: `prompt`, `provider`.
-- Output:
+- Entrada:
+  - `prompt`
+  - `provider` (`auto|deepseek|openai`)
+- Salida:
   - `summary`
   - `riskLevel` (`low|medium|high`)
   - `recommendedActions` (`string[]`)
   - `providerUsed` (`none|deepseek|openai`)
 
-## Known limitations
+## Entornos de ejecución
 
-- Endpoint file is framework-agnostic and should be mapped to the server runtime used in deployment.
-- Prompt hardening can be expanded with stricter schemas and moderation.
+- Desarrollo local:
+  - Endpoint servido desde middleware en `vite.config.ts`.
+- Producción (Netlify):
+  - Endpoint servido por `netlify/functions/ai-generate.mjs`.
+  - Redirect desde `/api/ai/generate` hacia `/.netlify/functions/ai-generate`.
+
+## Validación y resiliencia
+
+- Validación de body de entrada con `zod`.
+- Validación de respuesta del proveedor con schema estricto.
+- Normalización de payload para tolerar diferencias menores de formato.
+- Fallback determinístico con mensajes de diagnóstico.
+
+## Seguridad
+
+- Las API keys nunca se exponen en frontend.
+- Uso de variables de entorno en runtime server-side/function.
+- Posibilidad de desactivar IA globalmente con `ENABLE_AI=false`.
+
+## Límites actuales
+
+- No hay persistencia de resultados de análisis.
+- No hay rate limit ni cache por usuario.
+- El prompt puede endurecerse más con guardrails adicionales.

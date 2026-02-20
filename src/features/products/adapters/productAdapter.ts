@@ -12,8 +12,11 @@ const fakeStoreProductSchema = z.object({
 
 const fakeStoreCategoriesSchema = z.array(z.string())
 
-export const adaptFakeStoreProducts = (payload: unknown): Product[] => z.array(fakeStoreProductSchema).parse(payload)
+export const adaptFakeStoreProducts = (payload: unknown): Product[] =>
+  z.array(fakeStoreProductSchema).parse(payload)
 
-export const adaptFakeStoreCategories = (payload: unknown): string[] => fakeStoreCategoriesSchema.parse(payload)
+export const adaptFakeStoreCategories = (payload: unknown): string[] =>
+  fakeStoreCategoriesSchema.parse(payload)
 
-export const adaptFakeStoreProduct = (payload: unknown): Product => fakeStoreProductSchema.parse(payload)
+export const adaptFakeStoreProduct = (payload: unknown): Product =>
+  fakeStoreProductSchema.parse(payload)

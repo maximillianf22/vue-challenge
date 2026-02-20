@@ -1,7 +1,11 @@
 import { computed } from 'vue'
 import { useQuery } from '@tanstack/vue-query'
 import { ProductsRepository } from '@/features/products/services/productsRepository'
-import { getProductById, listProductCategories, listProducts } from '@/core/products/application/useCases'
+import {
+  getProductById,
+  listProductCategories,
+  listProducts,
+} from '@/core/products/application/useCases'
 import type { ProductFilters } from '@/core/products/domain/entities/Product'
 
 const repository = new ProductsRepository()

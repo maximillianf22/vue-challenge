@@ -1,5 +1,9 @@
 import { z } from 'zod'
-import type { IAIService, ProductInsightInput, ProductInsightResult } from '@/core/products/domain/ports/IAIService'
+import type {
+  IAIService,
+  ProductInsightInput,
+  ProductInsightResult,
+} from '@/core/products/domain/ports/IAIService'
 import { createProductInsightPrompt } from '@/features/ai/prompts/productInsightPrompt'
 
 const resultSchema = z.object({

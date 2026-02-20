@@ -59,8 +59,7 @@ export class ProductsRepository implements IProductsRepository {
       if (fromAll) {
         return fromAll
       }
-    } catch {
-    }
+    } catch {}
 
     const found = await fallbackProductsApi.one(id)
 
