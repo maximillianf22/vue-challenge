@@ -32,7 +32,7 @@ defineProps<Props>()
         <td class="px-4 py-3">${{ item.price.toFixed(2) }}</td>
         <td class="px-4 py-3">
           <RouterLink :to="`/products/${item.id}`">
-            <Button size="sm" variant="outline">
+            <Button size="sm" variant="outline" class="min-w-[110px] whitespace-nowrap">
               <Eye class="mr-1 h-4 w-4" />
               Ver detalle
             </Button>

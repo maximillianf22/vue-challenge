@@ -1,0 +1,7 @@
+[functions]
+directory = "netlify/functions"
+
+[[redirects]]
+from = "/api/ai/generate"
+to = "/.netlify/functions/ai-generate"
+status = 200
