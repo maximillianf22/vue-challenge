@@ -107,7 +107,11 @@ const generateInsight = async (): Promise<void> => {
             :options="providerOptions"
             @update:model-value="onProviderChange"
           />
-          <Button :disabled="aiLoading" class="min-w-[170px] whitespace-nowrap" @click="generateInsight">
+          <Button
+            :disabled="aiLoading"
+            class="min-w-[170px] whitespace-nowrap"
+            @click="generateInsight"
+          >
             <Loader2 v-if="aiLoading" class="mr-1 h-4 w-4 animate-spin" />
             <Sparkles v-else class="mr-1 h-4 w-4" />
             {{ aiLoading ? 'Generando...' : 'Generar análisis' }}
