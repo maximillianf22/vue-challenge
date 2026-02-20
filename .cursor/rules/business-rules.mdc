@@ -1,0 +1,11 @@
+---
+description: Product dashboard business rules
+globs:
+  - 'src/features/products/**/*'
+alwaysApply: true
+---
+
+- List supports search + category + pagination.
+- Filters state must be synchronized with URL query params.
+- Detail page must keep deterministic fallback when AI is disabled.
+- AI provider order in auto mode is `deepseek` then `openai`.

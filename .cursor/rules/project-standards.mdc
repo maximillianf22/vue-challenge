@@ -1,0 +1,11 @@
+---
+description: Project conventions and quality gates
+globs:
+  - '**/*'
+alwaysApply: true
+---
+
+- Required local gates before merge: `lint`, `test:unit`, `build`.
+- Keep public interfaces small and focused (ISP).
+- New data access must be behind repositories/adapters.
+- UI should reuse `src/shared/ui` components when possible.

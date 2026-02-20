@@ -1,0 +1,12 @@
+---
+description: Base engineering standards
+globs:
+  - 'src/**/*.ts'
+  - 'src/**/*.vue'
+alwaysApply: true
+---
+
+- Use layered architecture: `core` -> `features` -> `shared`.
+- Keep components and symbols in English.
+- Keep domain ports framework-agnostic.
+- Prefer explicit types for exported APIs.
